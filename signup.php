@@ -78,7 +78,7 @@
 			$user->password = password_hash($data['password'], PASSWORD_DEFAULT); //пароль нельзя хранить в открытом виде, мы его шифруем при помощи функции password_hash для php > 5.6
 			$user->group = 'user';
 			R::store($user);
-			echo '<div style="color:dreen;">Вы успешно зарегистрированы!</div><hr>';
+			echo '<div style="color:green;">Вы успешно зарегистрированы!</div><hr>';
 			echo '<a href="/">Вернуться</a>';
 		}else
 		{

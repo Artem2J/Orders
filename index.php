@@ -30,86 +30,34 @@
     <div class="pole">
         Авторизован! <br/>
         Привет, ! Ты в группе <?php echo $_SESSION['logged_user']->group; ?><br/>
+
+        <a href="addorder.php" class="add_order">+ add_order</a>
+
+        <?php
+            $orders = R::getAll('SELECT * FROM orders');
+            foreach ($orders as $order){
+
+        ?>
+
         <div class="order">
             <div class="order_body">
                 <div class="order_menu">
-                    <div class="number">number</div>
-                    <div class="date">date</div>
-                    <div class="owner">owner</div>
-                    <div class="client">client</div>
+                    <div class="number"><?php echo $order->number; ?></div>
+                    <div class="date"><?php echo $order->date; ?></div>
+                    <div class="owner"><?php echo $order->author; ?></div>
+                    <div class="client"><?php echo $order->client; ?></div>
                 </div>
                 <div class="order_text">
-                    text
+                    <?php echo $order->text_order; ?>
                 </div>
             </div>
             <div class="order_status">
-                <div class="st">Status</div>
+                <div class="st"><?php echo $order->status; ?></div>
             </div>
         </div>
-        <div class="order">
-            <div class="order_body">
-                <div class="order_menu">
-                    <div class="number">number</div>
-                    <div class="date">date</div>
-                    <div class="owner">owner</div>
-                    <div class="client">client</div>
-                </div>
-                <div class="order_text">
-                    text
-                </div>
-            </div>
-            <div class="order_status">
-                <div class="st">Status</div>
-            </div>
-        </div>
-        <div class="order">
-            <div class="order_body">
-                <div class="order_menu">
-                    <div class="number">number</div>
-                    <div class="date">date</div>
-                    <div class="owner">owner</div>
-                    <div class="client">client</div>
-                </div>
-                <div class="order_text">
-                    text
-                </div>
-            </div>
-            <div class="order_status">
-                <div class="st">Status</div>
-            </div>
-        </div>
-        <div class="order">
-            <div class="order_body">
-                <div class="order_menu">
-                    <div class="number">number</div>
-                    <div class="date">date</div>
-                    <div class="owner">owner</div>
-                    <div class="client">client</div>
-                </div>
-                <div class="order_text">
-                    text
-                </div>
-            </div>
-            <div class="order_status">
-                <div class="st">Status</div>
-            </div>
-        </div>
-        <div class="order">
-            <div class="order_body">
-                <div class="order_menu">
-                    <div class="number">number</div>
-                    <div class="date">date</div>
-                    <div class="owner">owner</div>
-                    <div class="client">client</div>
-                </div>
-                <div class="order_text">
-                    text
-                </div>
-            </div>
-            <div class="order_status">
-                <div class="st">Status</div>
-            </div>
-        </div>
+
+        <?php } ?>
+
     </div>
 
 <?php else : ?>
