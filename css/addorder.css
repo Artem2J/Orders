@@ -77,73 +77,16 @@ body{
     left: 0px;
 }
 
-.add_order {
-    display: block;
-    float: ;
-    border: 1px black solid;
-    background-color: #00ad70;
-    width: 100px;
-    height: 20px;
-    margin-top: 30px;
-    border-radius: 6px;
-    text-decoration: none;
-    color: white;
-}
-
-.preorder{
-    display: inline-block;
-    width: 700px;
-    margin: 10px 0px;
-}
-
 .order{
     border: 1px solid black;
     display: inline-block;
     width: 700px;
     margin: 10px 0px;
-}
-
-.order_body {
-    float: left;
-    width: 600px;
-    height: 120px;
-}
-
-.order_menu{
-    display: block;
-    height: 25px;
-    text-align: center;
-}
-.number, .date, .owner, .client{
-    border: 1px solid black;
-    display: inline-block;
-    width: 144px;
-    height: 24px;
-    text-align: center;
-    margin: 0px auto;
-}
-
-
-.order_text {
-    border: 1px solid black;
+    min-height: 300px;
     text-align: left;
-    display: block;
-    height: 95px;
+    padding-left: 20px;
 }
 
-.order_status {
-    border: 1px solid black;
-    display: block;
-    width: 100px;
-    margin-left: 600px;
-    height: 120px;
-}
-
-.st {
-    position: relative;
-    display: block;
-    top: 45px;
-}
 
 .footer {
   position: fixed;
@@ -161,3 +104,28 @@ body{
     font-size: 0.8em;
 }
 
+
+input {
+    white-space: pre-wrap;
+    
+}
+
+textarea {
+    width: 600px;
+    height: 140px;
+    resize: none;
+}
+
+.order_text {
+    background-color: white;
+    width: 600px;
+    min-height: 80px;
+}
+
+button {
+    margin: 20px 0;
+    border: 1px black solid;
+    background-color: #00ad70;
+    border-radius: 6px;
+    color: white;
+}

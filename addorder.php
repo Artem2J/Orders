@@ -21,7 +21,7 @@
 <head>
     <meta charset="utf-8">
 
-    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/addorder.css">
     <title>Orders</title>
 </head>
 
@@ -41,20 +41,17 @@
         <div class="munu_item"><a href="#">Comps IP</a></div>
     </div>
     <div class="pole">
-        <form action="/addorder.php" method="POST">
-            <strong>Ваш логин</strong>
-            <input type="text" name="login" value="<?php echo @$data['login']; ?>"><br/>
+        <div class="order">
+            <form action="/addorder.php" method="POST">
+                <p>Заказчик: <?php echo $_SESSION['logged_user']->login; ?></p>
+                <p>Клиент:
+                <input type="text" name="client" value=""></p>
+                <p>Заказ:</p>
 
-            <strong>Клиент</strong>
-            <input type="text" name="client" value=""><br/>
-
-            <strong>What you want order?</strong>
-            <input type="text" name="text_order" value=""><br/>
-
-
-
-            <button type="submit" name="add_order">Add</button>
-        </form>
+                <div class="order_text" type="text" name="text_order" value="" onkeyup="Wall.postChanged()" onkeydown="onCtrlEnter(event, Wall.sendPost)" onfocus="Wall.showEditPost()" contenteditable="true" role="textbox" aria-multiline="true"></div>
+                <button type="submit" name="add_order">Разместить заказ</button>
+            </form>
+        </div>
     </div>
     <div class="footer">
         <div class="cpr">© Artem2J, 2020</div>
