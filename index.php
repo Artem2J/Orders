@@ -1,5 +1,6 @@
 <?php 
 	require 'db.php';
+	$orders = R::getAll('SELECT * FROM orders');
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -33,30 +34,27 @@
 
         <a href="addorder.php" class="add_order">+ add_order</a>
 
-        <?php
-            $orders = R::getAll('SELECT * FROM orders');
-            foreach ($orders as $order){
 
-        ?>
+        <?php    foreach ($orders as $order): ?>
 
         <div class="order">
             <div class="order_body">
                 <div class="order_menu">
-                    <div class="number"><?php echo $order->number; ?></div>
-                    <div class="date"><?php echo $order->date; ?></div>
-                    <div class="owner"><?php echo $order->author; ?></div>
-                    <div class="client"><?php echo $order->client; ?></div>
+                    <div class="number"><?php echo $order['number']; ?></div>
+                    <div class="date"><?php echo $order['date']; ?></div>
+                    <div class="owner"><?php echo $order['author']; ?></div>
+                    <div class="client"><?php echo $order['client']; ?></div>
                 </div>
                 <div class="order_text">
-                    <?php echo $order->text_order; ?>
+                    <?php echo $order['text_order']; ?>
                 </div>
             </div>
             <div class="order_status">
-                <div class="st"><?php echo $order->status; ?></div>
+                <div class="st"><?php echo $order['status']; ?></div>
             </div>
         </div>
 
-        <?php } ?>
+        <?php endforeach; ?>
 
     </div>
 
