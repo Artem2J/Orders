@@ -7,7 +7,7 @@
         $order = R::dispense('orders');
         $order->number = $order->count();
         $order->date = date("m.d.y");
-        $order->author = $data['login'];
+        $order->author = $_SESSION['logged_user']->login;
         $order->client = $data['client'];
         $order->text_order = $data['text_order'];
         $order->status = 'new_order';
@@ -42,13 +42,13 @@
     </div>
     <div class="pole">
         <div class="order">
-            <form action="/addorder.php" method="POST">
+            <form action="/addorder.php" method="POST" onsubmit="javascript: return process();">
                 <p>Заказчик: <?php echo $_SESSION['logged_user']->login; ?></p>
                 <p>Клиент:
                 <input type="text" name="client" value=""></p>
                 <p>Заказ:</p>
-
-                <div class="order_text" type="text" name="text_order" value="" onkeyup="Wall.postChanged()" onkeydown="onCtrlEnter(event, Wall.sendPost)" onfocus="Wall.showEditPost()" contenteditable="true" role="textbox" aria-multiline="true"></div>
+                <input type="hidden" id="hidden" name="text_order" valaue="">
+                <div class="order_text" type="text" contenteditable="true" id="content" name="text" value="" onkeyup="Wall.postChanged()" onkeydown="onCtrlEnter(event, Wall.sendPost)" onfocus="Wall.showEditPost()" contenteditable="true" role="textbox" aria-multiline="true"></div>
                 <button type="submit" name="add_order">Разместить заказ</button>
             </form>
         </div>
@@ -57,5 +57,10 @@
         <div class="cpr">© Artem2J, 2020</div>
 
     </div>
-
+    <script>
+        function process() {
+            document.getElementById("hidden").value = document.getElementById("content").innerHTML;
+            return true;
+        }
+    </script>
 </body></html>
