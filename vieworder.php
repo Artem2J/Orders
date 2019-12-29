@@ -1,21 +1,9 @@
 <?php
-    require 'db.php';
+require 'db.php';
 
-    $data = $_POST;
+$data = $_GET;
+$data2 = $_POST;
 
-    if ( isset($data['add_order']) ){
-        $order = R::dispense('orders');
-        $order->number = R::count('orders') + 1;
-        $order->date = date("d.m.y");
-        $order->author = $_SESSION['logged_user']->login;
-        if ($data['client'] == '')$order->client = $_SESSION['logged_user']->login;
-        else $order->client =$data['client'];
-        $order->text_order = $data['text_order'];
-        $order->status = 'new_order';
-
-        R::store($order);
-        header('Location: /');
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -43,10 +31,10 @@
     </div>
     <div class="pole">
         <div class="order">
-            <form action="/addorder.php" method="POST" onsubmit="javascript: return process();">
+            <form action="vieworder.php" method="POST" onsubmit="javascript: return process();">
                 <p>Заказчик: <?php echo $_SESSION['logged_user']->login; ?></p>
                 <p>Клиент:
-                <input type="text" name="client" value=""></p>
+                    <input type="text" name="client" value=""></p>
                 <p>Заказ:</p>
                 <input type="hidden" id="hidden" name="text_order" valaue="">
                 <div class="order_text" type="text" contenteditable="true" id="content" name="text" value="" onkeyup="Wall.postChanged()" onkeydown="onCtrlEnter(event, Wall.sendPost)" onfocus="Wall.showEditPost()" contenteditable="true" role="textbox" aria-multiline="true"></div>

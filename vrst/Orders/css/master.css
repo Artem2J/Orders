@@ -100,7 +100,17 @@ body{
     display: inline-block;
     width: 700px;
     margin: 10px 0px;
+    text-align: left;
 }
+.order_link {
+    z-index: 1;
+    display: inline-block;
+    position: absolute;
+    width: 700px;
+    height: 120px;
+   
+}
+
 
 .order_body {
     float: left;
@@ -159,4 +169,5 @@ body{
     top: 10px;
     font-size: 0.8em;
 }
+
 

@@ -29,30 +29,27 @@
         <div class="munu_item"><a href="#">Comps IP</a></div>
     </div>
     <div class="pole">
-        Авторизован! <br/>
-        Привет, ! Ты в группе <?php echo $_SESSION['logged_user']->group; ?><br/>
-
-        <a href="addorder.php" class="add_order">+ add_order</a>
-
+       <div class='preorder'><a href="addorder.php" class="add_order">+ add_order</a></div>
 
         <?php    foreach ($orders as $order): ?>
 
-        <div class="order">
-            <div class="order_body">
-                <div class="order_menu">
-                    <div class="number"><?php echo $order['number']; ?></div>
-                    <div class="date"><?php echo $order['date']; ?></div>
-                    <div class="owner"><?php echo $order['author']; ?></div>
-                    <div class="client"><?php echo $order['client']; ?></div>
+            <div class="order">
+                <a href="vieworder.php?id=<?php echo $order['id']; ?>" class="order_link"></a>
+                <div class="order_body">
+                    <div class="order_menu">
+                        <div class="number"><?php echo $order['number']; ?></div>
+                        <div class="date"><?php echo $order['date']; ?></div>
+                        <div class="owner"><?php echo $order['author']; ?></div>
+                        <div class="client"><?php echo $order['client']; ?></div>
+                    </div>
+                    <div class="order_text">
+                        <?php echo $order['text_order']; ?>
+                    </div>
                 </div>
-                <div class="order_text">
-                    <?php echo $order['text_order']; ?>
+                <div class="order_status">
+                    <div class="st"><?php echo $order['status']; ?></div>
                 </div>
             </div>
-            <div class="order_status">
-                <div class="st"><?php echo $order['status']; ?></div>
-            </div>
-        </div>
 
         <?php endforeach; ?>
 
