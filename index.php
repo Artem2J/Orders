@@ -1,6 +1,8 @@
 <?php 
 	require 'db.php';
 	$orders = R::getAll('SELECT * FROM orders');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -23,7 +25,7 @@
 
 
     <div class="menu">
-        <div class="munu_item"><a href="#">Orders</a></div>
+        <div class="munu_item"><a href="/">Orders</a></div>
         <div class="munu_item"><a href="#">Complit orders</a></div>
         <div class="munu_item"><a href="#">Phone numbers</a></div>
         <div class="munu_item"><a href="#">Comps IP</a></div>
