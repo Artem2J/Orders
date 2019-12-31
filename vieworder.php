@@ -66,10 +66,7 @@ $order = R::load('orders', $order_id);
             </form>
         </div>
     </div>
-    <div class="footer">
-        <div class="cpr">© Artem2J, 2020</div>
-
-    </div>
+    <?php require 'html/footer.php'?>
     <script>
         function process() {
             document.getElementById("hidden_order_text").value = document.getElementById("content_order_text").innerHTML;

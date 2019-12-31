@@ -19,7 +19,8 @@
         header('Location: /');
     }
 
-require 'header_menu.php';
+require 'html/header.php';
+require 'html/menu.php';
 ?>
 
     <div class="pole">
@@ -35,10 +36,7 @@ require 'header_menu.php';
             </form>
         </div>
     </div>
-    <div class="footer">
-        <div class="cpr">© Artem2J, 2020</div>
-
-    </div>
+    <?php require 'html/footer.php'?>
     <script>
         function process() {
             document.getElementById("hidden").value = document.getElementById("content").innerHTML;

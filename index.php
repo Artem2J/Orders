@@ -1,6 +1,12 @@
 <?php 
 	require 'db.php';
-	$orders = R::getAll('SELECT * FROM orders');
+if ( isset ($_SESSION['logged_user']) ) {
+    if ($_SESSION['logged_user']->group == 'admin') {
+        $orders = R::getAll('SELECT * FROM orders');
+    } else {
+        $orders = R::getAll('SELECT * FROM orders WHERE author = :author', [':author' => $_SESSION['logged_user']->login]);
+    }
+}
 
 
 ?>
@@ -11,7 +17,7 @@
 
     <link rel="stylesheet" href="css/master.css">
     <title>Orders</title>
-</head>
+</head>+++++++
 
 <body>
 
@@ -23,13 +29,8 @@
 </div>
 <div class="main_body">
 
+    <?php require 'html/menu.php'?>
 
-    <div class="menu">
-        <div class="munu_item"><a href="/">Orders</a></div>
-        <div class="munu_item"><a href="#">Complit orders</a></div>
-        <div class="munu_item"><a href="#">Phone numbers</a></div>
-        <div class="munu_item"><a href="#">Comps IP</a></div>
-    </div>
     <div class="pole">
        <div class='preorder'><a href="addorder.php" class="add_order">+ add_order</a></div>
 
@@ -69,9 +70,6 @@
 <a href="/signup.php">Регистрация</a>
 <?php endif; ?>
 </div>
-<div class="footer">
-    <div class="cpr">© Artem2J, 2020</div>
-
-</div>
+    <?php require 'html/footer.php'?>
 
 </body></html>
