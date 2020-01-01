@@ -1,10 +1,10 @@
-<?php 
-	require 'db.php';
+<?php
+require 'db.php';
 if ( isset ($_SESSION['logged_user']) ) {
     if ($_SESSION['logged_user']->group == 'admin') {
-        $orders = R::getAll('SELECT * FROM orders WHERE status_id != :status_id', [':status_id' => 5]);
+        $orders = R::getAll('SELECT * FROM orders WHERE status_id = :status', [':status' => 5]);
     } else {
-        $orders = R::getAll('SELECT * FROM orders WHERE author = :author AND status_id != :status', [':author' => $_SESSION['logged_user']->login, ':status_id' => 5]);
+        $orders = R::getAll('SELECT * FROM orders WHERE author = :author AND status_id = :status', [':author' => $_SESSION['logged_user']->login, ':status' => 5]);
     }
 }
 
@@ -32,7 +32,7 @@ if ( isset ($_SESSION['logged_user']) ) {
     <?php require 'html/menu.php'?>
 
     <div class="pole">
-       <div class='preorder'><a href="addorder.php" class="add_order">+ add_order</a></div>
+        <div class='preorder'><a href="addorder.php" class="add_order">+ add_order</a></div>
 
         <?php    foreach ($orders as $order): ?>
 
@@ -58,18 +58,18 @@ if ( isset ($_SESSION['logged_user']) ) {
 
     </div>
 
-<?php else : ?>
+    <?php else : ?>
     <div class="header">
         <div class="logo"><img src="logo6.png" alt="Orders"></div>
 
 
     </div>
     <div class="main_body">
-Вы не авторизованы<br/>
-<a href="/login.php">Авторизация</a>
-<a href="/signup.php">Регистрация</a>
-<?php endif; ?>
-</div>
+        Вы не авторизованы<br/>
+        <a href="/login.php">Авторизация</a>
+        <a href="/signup.php">Регистрация</a>
+        <?php endif; ?>
+    </div>
     <?php require 'html/footer.php'?>
 
 </body></html>

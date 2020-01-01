@@ -9,7 +9,7 @@ if ( isset($data['save']) ){
     $order2->text_order = $data['text_order'];
     $order2->client = $data['client'];
     $order2->comment = $data['comment'];
-    $order2->status = $data['status'];
+    $order2->status_id = $data['status'];
     R::store($order2);
     header('Location: /');
 

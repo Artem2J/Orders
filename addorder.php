@@ -12,7 +12,7 @@
         if ($data['client'] == '')$order->client = $_SESSION['logged_user']->login;
         else $order->client =$data['client'];
         $order->text_order = $data['text_order'];
-        $order->status = 'new_order';
+        $order->status = R::load('statues', 1);
         $order->comment = '';
 
         R::store($order);

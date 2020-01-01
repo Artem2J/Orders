@@ -9,10 +9,10 @@ $order = R::load('orders', $order_id);
     $text_order = $order->text_order;
     $client = $order->client;
     $author = $order->author;
-    $status = $order->status;
+    $status_id = $order->status_id;
     $comment = $order->comment;
 
-
+$statuses = R::getAll('SELECT * FROM statuses');
 
 ?>
 <!DOCTYPE html>
@@ -31,14 +31,8 @@ $order = R::load('orders', $order_id);
 
 </div>
 <div class="main_body">
+  <?php  require 'html/menu.php'; ?>
 
-
-    <div class="menu">
-        <div class="munu_item"><a href="/">Orders</a></div>
-        <div class="munu_item"><a href="#">Complit orders</a></div>
-        <div class="munu_item"><a href="#">Phone numbers</a></div>
-        <div class="munu_item"><a href="#">Comps IP</a></div>
-    </div>
     <div class="pole">
         <div class="order">
             <form action="saveorder.php" method="POST" onsubmit="javascript: return process();">
@@ -54,11 +48,9 @@ $order = R::load('orders', $order_id);
                 <div class="comment" type="text" contenteditable="true" id="content_comment" name="text" value="" onkeyup="Wall.postChanged()" onkeydown="onCtrlEnter(event, Wall.sendPost)" onfocus="Wall.showEditPost()" contenteditable="true" role="textbox" aria-multiline="true"><?php echo $comment;?></div>
                 <br>
                 <select name="status">
-                    <option <?php if ($status == 'new_order') echo 'selected'; ?> value="new_order">new_order</option>
-                    <option <?php if ($status == 'Заказно частично') echo 'selected'; ?> value="Заказно частично">Заказно частично</option>
-                    <option <?php if ($status == 'Заказано') echo 'selected'; ?> value="Заказано">Заказано</option>
-                    <option <?php if ($status == 'Привезено') echo 'selected'; ?> value="Привезено">Привезено</option>
-                    <option <?php if ($status == 'Завершено') echo 'selected'; ?> value="Завершено">Завершено</option>
+                    <?php foreach ($statuses as $somestatus): ?>
+                        <option <?php if ($status_id == $somestatus['id']) echo 'selected'; ?> value=<?php echo $somestatus['id']; ?>><?php echo $somestatus['status']; ?></option>
+                    <?php endforeach; ?>
                 </select>
                 <br>
 
