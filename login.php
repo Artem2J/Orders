@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="utf-8">
 
-    <link rel="stylesheet" href="css/master.css">
-    <title>Orders</title>
-</head>
-
-<body>
-<div class="header">
-    <div class="logo"><img src="logo6.png"></div>
-    <div class="user">username     <a href="#">logout</a></div>
-
-</div>
-<div class="main_body">
 <?php
 	require 'db.php';
 
@@ -47,19 +32,22 @@
 		}
 
 	}
-
+require 'html/header.php';
 ?>
 
+<div class="login_form">
+    <form action="login.php" method="POST">
+	    <strong>Логин:</strong>
+	    <input type="text" name="login" value="<?php echo @$data['login']; ?>"><br/>
 
-<form action="login.php" method="POST">
-	<strong>Логин</strong>
-	<input type="text" name="login" value="<?php echo @$data['login']; ?>"><br/>
+	    <strong>Пароль:</strong>
+	    <input type="password" name="password" value="<?php echo @$data['password']; ?>"><br/>
 
-	<strong>Пароль</strong>
-	<input type="password" name="password" value="<?php echo @$data['password']; ?>"><br/>
+	    <button type="submit" name="do_login">Войти</button>
 
-	<button type="submit" name="do_login">Войти</button>
-</form>
+        <a href="signup.php">Регистрация</a>
+    </form>
+</div>
 
 </div>
 <div class="footer">
@@ -67,4 +55,5 @@
 
 </div>
 
-</body></html>
+</body>
+</html>

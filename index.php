@@ -1,10 +1,11 @@
 <?php 
 	require 'db.php';
+	require 'access.php';
 if ( isset ($_SESSION['logged_user']) ) {
     if ($_SESSION['logged_user']->group == 'admin') {
         $orders = R::getAll('SELECT * FROM orders WHERE status_id != :status_id', [':status_id' => 5]);
     } else {
-        $orders = R::getAll('SELECT * FROM orders WHERE author = :author AND status_id != :status', [':author' => $_SESSION['logged_user']->login, ':status_id' => 5]);
+        $orders = R::getAll('SELECT * FROM orders WHERE author = :author AND status_id != :status_id', [':author' => $_SESSION['logged_user']->login, ':status_id' => 5]);
     }
 }
 

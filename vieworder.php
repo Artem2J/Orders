@@ -1,5 +1,6 @@
 <?php
 require 'db.php';
+require 'access.php';
 
 $data = $_GET;
 $order_id = $data['id'];
@@ -13,6 +14,8 @@ $order = R::load('orders', $order_id);
     $comment = $order->comment;
 
 $statuses = R::getAll('SELECT * FROM statuses');
+$access = false;
+if ($_SESSION['logged_user']->group == 'admin') $access = true;
 
 ?>
 <!DOCTYPE html>
@@ -45,11 +48,13 @@ $statuses = R::getAll('SELECT * FROM statuses');
                 <div class="order_text" type="text" contenteditable="true" id="content_order_text" name="text" value="" onkeyup="Wall.postChanged()" onkeydown="onCtrlEnter(event, Wall.sendPost)" onfocus="Wall.showEditPost()" contenteditable="true" role="textbox" aria-multiline="true"><?php echo $text_order;?></div>
                 <p>Комментарии:</p>
                 <input type="hidden" id="hidden_comment" name="comment" value="">
-                <div class="comment" type="text" contenteditable="true" id="content_comment" name="text" value="" onkeyup="Wall.postChanged()" onkeydown="onCtrlEnter(event, Wall.sendPost)" onfocus="Wall.showEditPost()" contenteditable="true" role="textbox" aria-multiline="true"><?php echo $comment;?></div>
+                <div class="comment" type="text" contenteditable="<?php if(!$access) echo 'false'; ?>" id="content_comment" name="text" value="" onkeyup="Wall.postChanged()" onkeydown="onCtrlEnter(event, Wall.sendPost)" onfocus="Wall.showEditPost()" contenteditable="true" role="textbox" aria-multiline="true"><?php echo $comment;?></div>
                 <br>
                 <select name="status">
                     <?php foreach ($statuses as $somestatus): ?>
+                    <?php if (($access || ($status_id == $somestatus['id']))):?>
                         <option <?php if ($status_id == $somestatus['id']) echo 'selected'; ?> value=<?php echo $somestatus['id']; ?>><?php echo $somestatus['status']; ?></option>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </select>
                 <br>

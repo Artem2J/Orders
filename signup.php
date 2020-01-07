@@ -1,5 +1,6 @@
 <?php 
-	require 'db.php';
+require 'db.php';
+require 'html/header.php';
 
 	$data = $_POST;
 
@@ -55,7 +56,7 @@
 		}
 
 		//проверка капчи
-		$answers = array(
+		/*$answers = array(
 			1 => 'москва',
 			2 => 'вашингтон',
 			3 => '5',
@@ -66,7 +67,7 @@
 		if ( $_SESSION['captcha'] != array_search( mb_strtolower($_POST['captcha']), $answers ) )
 		{
 			$errors[] = 'Ответ на вопрос указан не верно!';
-		}
+		}*/
 
 
 		if ( empty($errors) )
@@ -80,6 +81,8 @@
 			R::store($user);
 			echo '<div style="color:green;">Вы успешно зарегистрированы!</div><hr>';
 			echo '<a href="/">Вернуться</a>';
+            echo '<script> alert("Вы успешно зарегистрированы.");</script>';
+			header('Location: login.php');
 		}else
 		{
 			echo '<div id="errors" style="color:red;">' .array_shift($errors). '</div><hr>';
@@ -88,7 +91,7 @@
 	}
 
 ?>
-
+<div class="signup_form">
 <form action="/signup.php" method="POST">
 	<strong>Ваш логин</strong>
 	<input type="text" name="login" value="<?php echo @$data['login']; ?>"><br/>
@@ -101,9 +104,18 @@
 
 	<strong>Повторите пароль</strong>
 	<input type="password" name="password_2" value="<?php echo @$data['password_2']; ?>"><br/>
-
+<!--
 	<strong><?php captcha_show(); ?></strong>
 	<input type="text" name="captcha" ><br/>
+-->
+	<button type="submit" name="do_signup" >Регистрация</button>
 
-	<button type="submit" name="do_signup">Регистрация</button>
 </form>
+</div>
+<div class="footer">
+    <div class="cpr">© Artem2J, 2020</div>
+
+</div>
+
+</body>
+</hmtl>

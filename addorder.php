@@ -1,5 +1,6 @@
 <?php
     require 'db.php';
+    require 'access.php';
 
     $data = $_POST;
 

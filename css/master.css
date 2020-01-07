@@ -140,3 +140,59 @@ body{
     top: 10px;
     font-size: 0.8em;
 }
+
+.login_form, .signup_form{
+    margin-top: 90px;
+    text-align: left;
+    display: inline-block;
+    border: 7px solid #00ad70;
+    width: 253px;
+    padding: 0 50px 30px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.login_form input, .signup_form input{
+    
+    display: block;
+    float: left;
+    background-color: white;
+    width: 250px;
+    height: 22px;
+}
+
+.login_form strong, .signup_form strong{
+    
+    display: block;
+    
+    margin-top: 35px;
+    margin-bottom: 5px;
+}
+
+.login_form button, .signup_form button{
+    margin-top: 16px;
+     border: 2px solid #00ad70;
+    text-decoration: none;
+    border-radius: 8px;
+    width: 110px;
+    text-align: center;
+    background-color: #00ad70;
+    color: white;
+}
+
+.login_form a{
+    margin-top: 16px;
+    float: right;
+    border: 2px solid #00ad70;
+    text-decoration: none;
+    border-radius: 8px;
+    width: 110px;
+    text-align: center;
+    color: #00ad70;
+}
+
+.login_form a:hover{
+    
+    background-color: #00ad70;
+    color: white;
+}
